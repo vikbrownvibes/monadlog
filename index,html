@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #6a0dad;
+            --secondary: #8a2be2;
+            --accent: #b19cd9;
+            --light: #e6e6fa;
+            --dark: #4b0082;
+            --text: #f8f8ff;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(177, 156, 217, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(177, 156, 217, 0.1) 0%, transparent 20%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), var(--light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(177, 156, 217, 0.5);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 60%;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 0;
+            gap: 40px;
+        }
+        
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid var(--accent);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-image:hover img {
+            transform: scale(1.1);
+        }
+        
+        .bio {
+            flex: 1;
+        }
+        
+        .bio h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--accent), var(--light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .bio p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .content-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .content-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        .content-toggle i {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+        
+        .content-toggle.active i {
+            transform: rotate(180deg);
+        }
+        
+        .content-container {
+            display: none;
+            padding: 20px;
+        }
+        
+        .content-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .blog-grid, .spotify-card, .youtube-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card, .spotify-item, .youtube-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        
+        .blog-card:hover, .spotify-item:hover, .youtube-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-image img {
+            transform: scale(1.1);
+        }
+        
+        .blog-content, .spotify-content, .youtube-content {
+            padding: 20px;
+        }
+        
+        .blog-content h3, .spotify-content h3, .youtube-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .blog-content p, .spotify-content p, .youtube-content p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        .blog-date {
+            font-size: 14px;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .spotify-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .spotify-icon {
+            font-size: 40px;
+            color: #1DB954;
+            margin-right: 20px;
+        }
+        
+        .youtube-card .youtube-image {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .youtube-card .youtube-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .youtube-card .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .youtube-card:hover .play-icon {
+            opacity: 1;
+        }
+        
+        .youtube-card .play-icon i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: var(--dark);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            nav ul {
+                gap: 10px;
+            }
+            
+            nav a {
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Portfolio</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="#spotify">Spotify</a></li>
+                    <li><a href="#youtube">YouTube</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="home">
+            <div class="hero">
+                <div class="profile-image">
+                    <a href="https://ibb.co/4nZP7Dvk"><img src="https://i.ibb.co/G4vc01Ym/5989919768376887635.jpg" alt="5989919768376887635" border="0" /></a>
+                </div>
+                <div class="bio">
+                    <h1>The PH Barney</h1>
+                    <p>Hello! I'm a passionate monad baby i eat monad daily.</p>
+                    <p>When I'm not coding, you can find me writing tech blogs, creating music playlists, or filming educational videos for my YouTube channel. I believe in continuous learning and sharing knowledge with the community.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blogs">
+            <h2 class="section-title">My Blogs</h2>
+            <div class="content-toggle" id="blogs-toggle">
+                <h3>View My Latest Articles</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="content-container" id="blogs-content">
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Web Development">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-date">June 15, 2023</span>
+                            <h3>Mastering CSS Grid Layouts</h3>
+                            <p>Learn how to create responsive and modern layouts using CSS Grid. This comprehensive guide covers everything from basic concepts to advanced techniques.</p>
+                            <a href="#" class="btn">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1700&q=80" alt="JavaScript">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-date">July 2, 2023</span>
+                            <h3>JavaScript Best Practices in 2023</h3>
+                            <p>Discover the latest JavaScript best practices that will help you write cleaner, more efficient, and maintainable code in your projects.</p>
+                            <a href="#" class="btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="spotify">
+            <h2 class="section-title">Listen on Spotify</h2>
+            <div class="content-toggle" id="spotify-toggle">
+                <h3>My Favorite Playlists</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="content-container" id="spotify-content">
+                <div class="spotify-card">
+                    <div class="spotify-item">
+                        <div class="spotify-icon">
+                            <i class="fab fa-spotify"></i>
+                        </div>
+                        <div class="spotify-content">
+                            <h3>Coding Focus Playlist</h3>
+                            <p>A curated playlist of electronic and ambient music to help you concentrate during coding sessions.</p>
+                            <a href="#" class="btn">Listen Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="youtube">
+            <h2 class="section-title">YouTube Videos</h2>
+            <div class="content-toggle" id="youtube-toggle">
+                <h3>My Latest Tutorials</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="content-container" id="youtube-content">
+                <div class="youtube-grid">
+                    <div class="youtube-card">
+                        <div class="youtube-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-bf19f8fd1085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Web Development">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="youtube-content">
+                            <h3>Building a Portfolio Website</h3>
+                            <p>Learn how to create a stunning portfolio website from scratch using HTML, CSS, and JavaScript.</p>
+                            <a href="#" class="btn">Watch Now</a>
+                        </div>
+                    </div>
+                    <div class="youtube-card">
+                        <div class="youtube-image">
+                            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="CSS Animation">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="youtube-content">
+                            <h3>Advanced CSS Animations</h3>
+                            <p>Create stunning animations using pure CSS without any JavaScript libraries.</p>
+                            <a href="#" class="btn">Watch Now</a>
+                        </div>
+                    </div>
+                    <div class="youtube-card">
+                        <div class="youtube-image">
+                            <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="JavaScript">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="youtube-content">
+                            <h3>JavaScript Project: Todo App</h3>
+                            <p>Build a fully functional Todo application using vanilla JavaScript.</p>
+                            <a href="#" class="btn">Watch Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 Alex Johnson. All Rights Reserved.</p>
+            <p>Designed with ❤️ and Purple</p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle content sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggles = document.querySelectorAll('.content-toggle');
+            
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.id.replace('toggle', 'content');
+                    const content = document.getElementById(targetId);
+                    
+                    // Toggle active class
+                    this.classList.toggle('active');
+                    content.classList.toggle('active');
+                    
+                    // Close other sections
+                    toggles.forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            const otherTargetId = otherToggle.id.replace('toggle', 'content');
+                            const otherContent = document.getElementById(otherTargetId);
+                            
+                            if (otherContent.classList.contains('active')) {
+                                otherToggle.classList.remove('active');
+                                otherContent.classList.remove('active');
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
