@@ -1,1 +1,1 @@
-
+former logo container linear-gradient(135deg, var(--primary-color), var(--secondary-color))
