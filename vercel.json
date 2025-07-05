@@ -16,31 +16,25 @@
 
 
 
+
+
 {
+  "version": 2,
   "routes": [
     {
       "src": "/podcast",
-      "dest": "/podcast.html",
-      "headers": {
-        "Content-Type": "text/html"
-      }
+      "dest": "/podcast.html"
+    },
+    {
+      "src": "/podcast.html",
+      "dest": "/podcast.html"
     },
     {
       "src": "/(.*)",
       "dest": "/index.html",
       "headers": {
-        "Content-Type": "text/html"
+        "Cache-Control": "s-maxage=0"
       }
     }
-  ]
-}
-
-{
-  "routes": [
-    {
-      "src": "/podcast.html",
-      "dest": "/podcast.html"
-    },
-    // ... rest of your confi
   ]
 }
