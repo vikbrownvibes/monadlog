@@ -13,3 +13,24 @@
     }
   ]
 }
+
+
+
+{
+  "routes": [
+    {
+      "src": "/podcast",
+      "dest": "/podcast.html",
+      "headers": {
+        "Content-Type": "text/html"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "headers": {
+        "Content-Type": "text/html"
+      }
+    }
+  ]
+}
