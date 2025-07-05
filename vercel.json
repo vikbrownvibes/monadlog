@@ -14,27 +14,3 @@
   ]
 }
 
-
-
-
-
-{
-  "version": 2,
-  "routes": [
-    {
-      "src": "/podcast",
-      "dest": "/podcast.html"
-    },
-    {
-      "src": "/podcast.html",
-      "dest": "/podcast.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "headers": {
-        "Cache-Control": "s-maxage=0"
-      }
-    }
-  ]
-}
