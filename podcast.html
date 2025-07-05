@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episodes | Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Button Styles */
+        .home-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(110, 142, 251, 0.4);
+            background: linear-gradient(135deg, #a777e3, #6e8efb);
+        }
+
+        /* Cards Container */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        /* Card Styles */
+        .card {
+            width: 300px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid #333;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border-color: #6e8efb;
+        }
+
+        .card-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .card-description {
+            color: #aaaaaa;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .card-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #6e8efb;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .card-link:hover {
+            background-color: #5a7bf0;
+            transform: translateY(-2px);
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Episodes Coming Soon</h1>
+            <a href="index.html" class="home-btn">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </header>
+
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="card-image-placeholder">
+                    Episode Title
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Episode 1</h3>
+                    <p class="card-description">Exciting new content coming soon. Stay tuned for updates on this amazing episode!</p>
+                    <a href="#" class="card-link">Notify Me</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="card-image-placeholder">
+                    Episode Title
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Episode 2</h3>
+                    <p class="card-description">Exciting new content coming soon. Stay tuned for updates on this amazing episode!</p>
+                    <a href="www.g.com" class="card-link">Notify Me</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="card-image-placeholder">
+                    Episode Title
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Episode 3</h3>
+                    <p class="card-description">Exciting new content coming soon. Stay tuned for updates on this amazing episode!</p>
+                    <a href="#" class="card-link">Notify Me</a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="card-image-placeholder">
+                    Episode Title
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Episode 4</h3>
+                    <p class="card-description">Exciting new content coming soon. Stay tuned for updates on this amazing episode!</p>
+                    <a href="#" class="card-link">Notify Me</a>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="card-image-placeholder">
+                    
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Episode 5</h3>
+                    <p class="card-description">Exciting new content coming soon. Stay tuned for updates on this amazing episode!</p>
+                    <a href="#" class="card-link">Notify Me</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <a href="index.html" class="home-btn">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </footer>
+    </div>
+
+    <script>
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to cards when they come into view
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+
+            // Add click effect to buttons
+            const buttons = document.querySelectorAll('.home-btn, .card-link');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        alert('This episode is coming soon! We will notify you when it\'s available.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
